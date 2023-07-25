@@ -3,14 +3,16 @@
     materialized = 'incremental',
     on_schema_change = 'append_new_columns',
     unique_key = ['backup_date'],
+    partition_by = {
+      "field": "backup_date",
+      "granularity": "day"
+    },
     tags = ['sales', 'backup'],
-
-    -- delete current day data just in case it's already synced
     pre_hook = 'delete from {{this}} where date(backup_date) = date(current_date("Asia/Jakarta"))',
-    -- delete backup older than 7 days
     post_hook = 'delete from {{this}} where date(backup_date) <= date_sub(current_date("Asia/Jakarta"), INTERVAL 7 DAY)'
   )
 }}
+
 
 select
   current_date("Asia/Jakarta") as backup_date, -- current time when data is pulled from raw sales
