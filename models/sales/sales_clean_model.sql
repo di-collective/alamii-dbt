@@ -1,7 +1,11 @@
 {{ 
   config(
     materialized = 'table',
-    full_refres = true,
+    full_refresh = true,
+    partition_by = {
+      "field": "po_date",
+      "granularity": "month"
+    },
     tags = ['sales']
   )
 }}
@@ -20,21 +24,22 @@ select
   sub_type as sub_type,
   channel as channel,
   dist as dist,
-  as area_simple,
-  as city,
-  as province,
-  as dist_branc,
-  as dist_kode_outlet,
-  as dist_outlet_name,
-  _sales_pcs_ as sales_pcs,
-  _sales_ctn_ as sales_ctn,
-  _price_per_pc_rev_ as price_per_pc_rev,
-  _sales_value_gtv_ as sales_value_gtv,
-  _sales_value_rev_ as sales_value_rev,
-  _sales_value_rbp_ as sales_value_rbp,
-  _account_manager_ as account_manager,
-  _supervisor_ as supervisor,
-  _price_per_pc_rbp_ as price_per_pc_rbp,
+  area_simple as area_simple,
+  city as city,
+  province as province,
+  dist_branc as dist_branc,
+  dist_kode_outlet as dist_kode_outlet,
+  dist_outlet_name as dist_outlet_name,
+  safe_cast(regexp_replace(sales_pcs, r'[^0-9.]', '') as int64) as sales_pcs,
+  safe_cast(regexp_replace(sales_ctn, r'[^0-9.]', '') as int64) as sales_ctn,
+  safe_cast(price_per_pc_rev as numeric) as price_per_pc_rev,
+  safe_cast(regexp_replace(sales_value_gtv, r'[^0-9.]', '') as numeric) as sales_value_gtv,
+  safe_cast(regexp_replace(sales_value_rev, r'[^0-9.]', '') as numeric) as sales_value_rev,
+  safe_cast(regexp_replace(sales_value_rbp, r'[^0-9.]', '') as numeric) as sales_value_rbp,
+  account_manager as account_manager,
+  supervisor as supervisor,
+  safe_cast(price_per_pc_rbp as numeric) as price_per_pc_rbp,
   store_name_clean as store_name_clean
 from {{ ref('sales_backup_model') }}
 where backup_date = current_date("Asia/Jakarta")
+  and po_date is not null
