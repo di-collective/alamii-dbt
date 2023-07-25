@@ -7,9 +7,10 @@
       "field": "backup_date",
       "granularity": "day"
     },
+    require_partition_filter = true,
+    partition_expiration_days = 7,
     tags = ['sales', 'backup'],
-    pre_hook = 'delete from {{this}} where date(backup_date) = date(current_date("Asia/Jakarta"))',
-    post_hook = 'delete from {{this}} where date(backup_date) <= date_sub(current_date("Asia/Jakarta"), INTERVAL 7 DAY)'
+    pre_hook = 'delete from {{this}} where date(backup_date) = date(current_date("Asia/Jakarta"))'
   )
 }}
 
