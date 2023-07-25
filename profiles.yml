@@ -9,6 +9,6 @@ alamii:
       location: asia-southeast2
       project: "alamii"
       dataset: "sales_production"
-      keyfile: "{{ env_var('DBT_ENV_SECRET_GOOGLE_BIGQUERY_KEYFILE') }}"
+      keyfile: "{{ env_var('DBT_GOOGLE_BIGQUERY_KEYFILE') }}"
       priority: interactive
       threads: 1
