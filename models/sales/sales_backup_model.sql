@@ -1,16 +1,15 @@
 {{ 
   config(
     materialized = 'incremental',
+    incremental_strategy = 'insert_overwrite',
     on_schema_change = 'append_new_columns',
     unique_key = ['backup_date'],
     partition_by = {
       "field": "backup_date",
       "granularity": "day"
     },
-    require_partition_filter = true,
     partition_expiration_days = 7,
-    tags = ['sales', 'backup'],
-    pre_hook = 'delete from {{this}} where date(backup_date) = date(current_date("Asia/Jakarta"))'
+    tags = ['sales', 'backup']
   )
 }}
 
