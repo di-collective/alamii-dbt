@@ -41,5 +41,5 @@ select
   safe_cast(price_per_pc_rbp as numeric) as price_per_pc_rbp,
   store_name_clean as store_name_clean
 from {{ ref('sales_backup_model') }}
-where backup_date = current_date("Asia/Jakarta")
+where backup_date = {{ get_workflow_date() }}
   and po_date is not null
