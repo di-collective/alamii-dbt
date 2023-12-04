@@ -36,6 +36,7 @@ with sales_2023_onwards as (
     dist_outlet_name as dist_outlet_name,
     _sales_pcs_ as sales_pcs,
     _sales_ctn_ as sales_ctn,
+    _sales_qty3_ as sales_qty3,
     _price_per_pc_rev_ as price_per_pc_rev,
     _sales_value_gtv_ as sales_value_gtv,
     _sales_value_rev_ as sales_value_rev,
@@ -44,7 +45,7 @@ with sales_2023_onwards as (
     _supervisor_ as supervisor,
     _price_per_pc_rbp_ as price_per_pc_rbp,
     store_name_clean as store_name_clean
-  from alamii.sales_production.raw_sales
+  from alamii.sales_production.raw_sales2
   where year_po >= 2023
 ),
 
@@ -71,6 +72,7 @@ sales_2022_backwards as (
     dist_outlet_name as dist_outlet_name,
     _sales_pcs_ as sales_pcs,
     _sales_ctn_ as sales_ctn,
+    _sales_qty3_ as sales_qty3,
     _price_per_pc_rev_ as price_per_pc_rev,
     _sales_value_gtv_ as sales_value_gtv,
     _sales_value_rev_ as sales_value_rev,
@@ -79,7 +81,7 @@ sales_2022_backwards as (
     _supervisor_ as supervisor,
     _price_per_pc_rbp_ as price_per_pc_rbp,
     store_name_clean as store_name_clean
-  from alamii.sales_production.raw_sales
+  from alamii.sales_production.raw_sales2
   where year_po <= 2022
 )
 

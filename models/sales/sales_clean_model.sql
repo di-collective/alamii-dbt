@@ -32,6 +32,7 @@ select
   dist_outlet_name as dist_outlet_name,
   safe_cast(regexp_replace(sales_pcs, r'[^0-9.]', '') as int64) as sales_pcs,
   safe_cast(regexp_replace(sales_ctn, r'[^0-9.]', '') as int64) as sales_ctn,
+  safe_cast(regexp_replace(sales_qty3, r'[^0-9.]', '') as int64) as sales_qty3,
   safe_cast(price_per_pc_rev as numeric) as price_per_pc_rev,
   safe_cast(regexp_replace(sales_value_gtv, r'[^0-9.]', '') as numeric) as sales_value_gtv,
   safe_cast(regexp_replace(sales_value_rev, r'[^0-9.]', '') as numeric) as sales_value_rev,
