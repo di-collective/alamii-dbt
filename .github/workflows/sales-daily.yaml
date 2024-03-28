@@ -39,7 +39,7 @@ jobs:
       - uses: actions/checkout@master
       - uses: actions/setup-python@v4
         with:
-          python-version: "3.11"
+          python-version: "3.12"
       - run: pip3 install dbt-bigquery
       - run: dbt --version
       - run: 'echo "$KEYFILE" > ./dbt-service-account.json'
