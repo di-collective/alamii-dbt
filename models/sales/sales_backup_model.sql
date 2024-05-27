@@ -44,7 +44,11 @@ with sales_2024_onwards as (
     _account_manager_ as account_manager,
     _supervisor_ as supervisor,
     _price_per_pc_rbp_ as price_per_pc_rbp,
-    store_name_clean as store_name_clean
+    store_name_clean as store_name_clean,
+    delivery_date,
+    _po_pcs_ as po_pcs,
+    _po_ctn_ as po_ctn,
+    _po_value_rbp_ as po_value_rbp,
   from alamii.sales_production.raw_sales_v3
   where year_po >= 2024
 ),
@@ -80,7 +84,11 @@ sales_2023_backwards as (
     _account_manager_ as account_manager,
     _supervisor_ as supervisor,
     _price_per_pc_rbp_ as price_per_pc_rbp,
-    store_name_clean as store_name_clean
+    store_name_clean as store_name_clean,
+    delivery_date,
+    _po_pcs_ as po_pcs,
+    _po_ctn_ as po_ctn,
+    _po_value_rbp_ as po_value_rbp,
   from alamii.sales_production.raw_sales_v3
   where year_po <= 2023
 )

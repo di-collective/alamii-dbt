@@ -40,7 +40,11 @@ select
   account_manager as account_manager,
   supervisor as supervisor,
   safe_cast(price_per_pc_rbp as numeric) as price_per_pc_rbp,
-  store_name_clean as store_name_clean
+  store_name_clean as store_name_clean,
+  parse_date('%d/%m/%E4Y', delivery_date) as delivery_date,
+  safe_cast(regexp_replace(po_pcs, r'[^0-9.]', '') as int64) as po_pcs,
+  safe_cast(regexp_replace(po_ctn, r'[^0-9.]', '') as int64) as po_ctn,
+  safe_cast(regexp_replace(po_value_rbp, r'[^0-9.]', '') as numeric) as po_value_rbp
 from {{ ref('sales_backup_model') }}
 where backup_date = {{ get_workflow_date() }}
   and po_date is not null
