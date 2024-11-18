@@ -45,7 +45,7 @@ with sales_2022_onwards as (
     _supervisor_ as supervisor,
     safe_cast(_price_per_pc_rbp_ as integer) as price_per_pc_rbp,
     store_name_clean as store_name_clean,
-    delivery_date,
+    format_date('%d-%m-%Y', delivery_date) as delivery_date,
     safe_cast(_po_pcs_ as string) as po_pcs,
     safe_cast(_po_ctn_ as string) as po_ctn,
     _po_value_rbp_ as po_value_rbp,
