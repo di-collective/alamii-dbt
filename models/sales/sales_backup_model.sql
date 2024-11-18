@@ -49,7 +49,10 @@ with sales_2022_onwards as (
     _po_pcs_ as po_pcs,
     _po_ctn_ as po_ctn,
     _po_value_rbp_ as po_value_rbp,
-  from alamii.sales_production.raw_sales_v3
+    SMD as smd,
+    sales_supervisor,
+    sub_area
+  from alamii.sales_production.raw_sales_v4
   where year_po >= 2022
 )
 

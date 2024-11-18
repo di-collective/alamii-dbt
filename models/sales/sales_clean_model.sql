@@ -44,7 +44,10 @@ select
   parse_date('%d/%m/%E4Y', replace(delivery_date, '-', '/')) as delivery_date,
   safe_cast(regexp_replace(po_pcs, r'[^0-9.]', '') as int64) as po_pcs,
   safe_cast(regexp_replace(po_ctn, r'[^0-9.]', '') as numeric) as po_ctn,
-  safe_cast(regexp_replace(po_value_rbp, r'[^0-9.]', '') as numeric) as po_value_rbp
+  safe_cast(regexp_replace(po_value_rbp, r'[^0-9.]', '') as numeric) as po_value_rbp,
+  smd,
+  sales_supervisor,
+  sub_area
 from {{ ref('sales_backup_model') }}
 where backup_date = {{ get_workflow_date() }}
   and po_date is not null
