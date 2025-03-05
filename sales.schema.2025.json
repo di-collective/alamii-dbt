@@ -1,0 +1,154 @@
+[
+  {
+    "name": "ingest_at",
+    "type": "TIMESTAMP"
+  },
+  {
+    "name": "id",
+    "type": "STRING"
+  },
+  {
+    "name": "po_date",
+    "type": "DATE"
+  },
+  {
+    "name": "year_month_po",
+    "type": "STRING"
+  },
+  {
+    "name": "year_po",
+    "type": "INTEGER"
+  },
+  {
+    "name": "month_po",
+    "type": "INTEGER"
+  },
+  {
+    "name": "product",
+    "type": "STRING"
+  },
+  {
+    "name": "variant",
+    "type": "STRING"
+  },
+  {
+    "name": "store_name_ori",
+    "type": "STRING"
+  },
+  {
+    "name": "group_account",
+    "type": "STRING"
+  },
+  {
+    "name": "type",
+    "type": "STRING"
+  },
+  {
+    "name": "sub_type",
+    "type": "STRING"
+  },
+  {
+    "name": "channel",
+    "type": "STRING"
+  },
+  {
+    "name": "dist",
+    "type": "STRING"
+  },
+  {
+    "name": "area_simple",
+    "type": "STRING"
+  },
+  {
+    "name": "city",
+    "type": "STRING"
+  },
+  {
+    "name": "province",
+    "type": "STRING"
+  },
+  {
+    "name": "dist_branc",
+    "type": "STRING"
+  },
+  {
+    "name": "dist_kode_outlet",
+    "type": "STRING"
+  },
+  {
+    "name": "dist_outlet_name",
+    "type": "STRING"
+  },
+  {
+    "name": "sales_pcs",
+    "type": "NUMERIC"
+  },
+  {
+    "name": "sales_ctn",
+    "type": "NUMERIC"
+  },
+  {
+    "name": "sales_qty3",
+    "type": "NUMERIC"
+  },
+  {
+    "name": "price_per_pc_rev",
+    "type": "NUMERIC"
+  },
+  {
+    "name": "sales_value_gtv",
+    "type": "NUMERIC"
+  },
+  {
+    "name": "sales_value_rev",
+    "type": "NUMERIC"
+  },
+  {
+    "name": "sales_value_rbp",
+    "type": "NUMERIC"
+  },
+  {
+    "name": "account_manager",
+    "type": "STRING"
+  },
+  {
+    "name": "supervisor",
+    "type": "STRING"
+  },
+  {
+    "name": "price_per_pc_rbp",
+    "type": "NUMERIC"
+  },
+  {
+    "name": "store_name_clean",
+    "type": "STRING"
+  },
+  {
+    "name": "delivery_date",
+    "type": "DATE"
+  },
+  {
+    "name": "po_pcs",
+    "type": "NUMERIC"
+  },
+  {
+    "name": "po_ctn",
+    "type": "NUMERIC"
+  },
+  {
+    "name": "po_value_rbp",
+    "type": "NUMERIC"
+  },
+  {
+    "name": "smd",
+    "type": "STRING"
+  },
+  {
+    "name": "sales_supervisor",
+    "type": "STRING"
+  },
+  {
+    "name": "sub_area",
+    "type": "STRING"
+  }
+]

@@ -4,3 +4,4 @@ dbt_packages/
 logs/
 keyfile.json
 .user.yml
+ignore/

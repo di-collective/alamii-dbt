@@ -1,0 +1,34 @@
+name: Sales Reports
+
+on:
+  schedule:
+    - cron: "0 18 * * *"
+  push:
+    branches:
+      - "actions/**"
+    tags:
+      - v[0-9].[0-9]+.[0-9]+
+
+env:
+  DBT_PROFILES_DIR: ./
+  DBT_GOOGLE_PROJECT: alamii
+  DBT_GOOGLE_BIGQUERY_DATASET: sales_production
+  DBT_GOOGLE_BIGQUERY_KEYFILE: ./dbt-service-account.json
+
+jobs:
+  dbt:
+    name: Run Transformation
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+      - run: pip3 install dbt-bigquery
+      - run: dbt --version
+      - run: 'echo "$KEYFILE" > ./dbt-service-account.json'
+        shell: bash
+        env:
+          KEYFILE: ${{secrets.DBT_GOOGLE_BIGQUERY_KEYFILE}}
+      - run: "dbt run --select v2"
