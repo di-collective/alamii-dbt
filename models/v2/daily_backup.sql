@@ -50,4 +50,4 @@ select
   safe_cast(SMD as string) as smd,
   safe_cast(sales_supervisor as string) as sales_supervisor,
   safe_cast(sub_area as string) as sub_area
-from alamii.sales_production.sales_2024_onwards
+from alamii.sales_production.raw_sales_v4

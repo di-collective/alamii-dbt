@@ -9,7 +9,7 @@
 }}
 
 select
-  concat(
+  upper(concat(
     format_date("%Y%m%d", po_date),
     substr(regexp_replace(product, "\\s", ""), 1, 5),
     substr(regexp_replace(variant, "\\s", ""), 1, 10),
@@ -17,7 +17,7 @@ select
     substr(regexp_replace(store_name_clean, "\\s", ""), length(regexp_replace(store_name_clean, "\\s", ""))-4),
     substr(regexp_replace(city, "\\s", ""), 1, 5),
     substr(regexp_replace(city, "\\s", ""), length(regexp_replace(city, "\\s", ""))-4)
-  ) as id,
+  )) as id,
   po_date as po_date,
   year_month_po as year_month_po,
   safe_cast(year_po as integer) as year_po,
