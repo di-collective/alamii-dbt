@@ -4,6 +4,10 @@
     incremental_strategy = 'merge',
     on_schema_change = 'append_new_columns',
     unique_key = ['id'],
+    partition_by = {
+      "field": "po_date",
+      "granularity": "monthly"
+    },
     tags = ['v2', 'sales', 'clean']
   )
 }}
@@ -56,3 +60,7 @@ select
   sub_area
 from {{ ref('daily_backup') }}
 where ingest_at = current_date("Asia/Jakarta")
+  and po_date is not null
+  and product is not null
+  and variant is not null
+  and city is not null
