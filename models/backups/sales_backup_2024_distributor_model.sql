@@ -2,7 +2,7 @@
   config(
     materialized = 'table',
     full_refresh = true,
-    tags = ['sales', 'backup']
+    tags = ['sales', 'backup', '2024', 'distributor']
   )
 }}
 
