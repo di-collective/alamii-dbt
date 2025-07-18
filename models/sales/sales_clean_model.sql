@@ -12,6 +12,7 @@
 
 
 select
+  generate_uuid() as id,
   po_date as po_date,
   year_month_po as year_month_po,
   year_po as year_po,
