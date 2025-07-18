@@ -51,5 +51,4 @@ select
   sub_area
 from {{ ref('sales_backup_model') }}
 where po_date is not null
-  and year_po <= 2024
-  or year_po >= 2025 and backup_date = {{ get_workflow_date() }}
+  and backup_date = {{ get_workflow_date() }}
