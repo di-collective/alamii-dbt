@@ -41,5 +41,5 @@ jobs:
       - name: Send status to webhook
         run: |
           curl -X POST -H "Content-Type: application/json" \
-          -d '{"status": "${{ needs.main_job.result }}"}' \
+          -d '{"status": "${{ needs.dbt.result }}"}' \
           "${{ github.event.inputs.resumeUrl }}"
