@@ -3,7 +3,7 @@ name: Sales Drive Deduplicator
 on:
   workflow_dispatch:
     inputs:
-      resumeURL:
+      resumeUrl:
         description: 'The webhook URL to send the final status to.'
         required: false
         type: string
@@ -36,10 +36,10 @@ jobs:
     needs: dbt
     runs-on: ubuntu-latest
 
-    if: github.event.inputs.resumeURL != '' && always()
+    if: github.event.inputs.resumeUrl != '' && always()
     steps:
       - name: Send status to webhook
         run: |
           curl -X POST -H "Content-Type: application/json" \
           -d '{"status": "${{ needs.main_job.result }}"}' \
-          "${{ github.event.inputs.resumeURL }}"
+          "${{ github.event.inputs.resumeUrl }}"
