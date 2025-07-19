@@ -14,5 +14,5 @@ select
   sales_value_gtv, sales_value_rev, sales_value_rbp, account_manager, supervisor, price_per_pc_rbp, store_name_clean, delivery_date,
   po_pcs, po_ctn, po_value_rbp, smd, sales_supervisor, sub_area
 from alamii.sales_production.v2_sales_drive_staging
-where date(ingest_at) = date("2025-07-17")
+where date(ingest_at) = current_date("Asia/Jakarta")
 qualify row_number() over(partition by id order by ingest_at desc) = 1
