@@ -2,6 +2,11 @@ name: Sales Drive Deduplicator
 
 on:
   workflow_dispatch:
+    inputs:
+      resumeURL:
+        description: 'The webhook URL to send the final status to.'
+        required: false
+        type: string
 
 env:
   DBT_PROFILES_DIR: ./
@@ -26,3 +31,15 @@ jobs:
         env:
           KEYFILE: ${{secrets.DBT_GOOGLE_BIGQUERY_KEYFILE}}
       - run: "dbt run --select v2_sales_drive_final"
+  notify:
+    name: Notify
+    needs: dbt
+    runs-on: ubuntu-latest
+
+    if: github.event.inputs.resumeURL != '' && always()
+    steps:
+      - name: Send status to webhook
+        run: |
+          curl -X POST -H "Content-Type: application/json" \
+          -d '{"status": "${{ needs.main_job.result }}"}' \
+          "${{ github.event.inputs.resumeURL }}"

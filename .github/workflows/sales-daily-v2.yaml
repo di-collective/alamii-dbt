@@ -1,4 +1,4 @@
-name: Sales Reports
+name: Sales Reports v2
 
 on:
   schedule:
