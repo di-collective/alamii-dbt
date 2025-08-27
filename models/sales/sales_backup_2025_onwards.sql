@@ -43,6 +43,8 @@ select
   _po_value_rbp_ as po_value_rbp,
   SMD as smd,
   sales_supervisor,
-  sub_area
+  sub_area,
+  store_status,
+  sales_type
 from alamii.sales_production.raw_sales_v4
 where year_po >= 2025

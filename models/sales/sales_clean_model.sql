@@ -48,7 +48,9 @@ select
   safe_cast(regexp_replace(po_value_rbp, r'[^0-9.-]', '') as numeric) as po_value_rbp,
   smd,
   sales_supervisor,
-  sub_area
+  sub_area,
+  store_status,
+  sales_type
 from {{ ref('sales_backup_model') }}
 where po_date is not null
   and backup_date = {{ get_workflow_date() }}

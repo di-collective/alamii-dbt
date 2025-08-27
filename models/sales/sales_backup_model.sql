@@ -13,10 +13,31 @@
   )
 }}
 
-select current_date("Asia/Jakarta") as backup_date, * except (backup_date) from {{ ref('sales_backup_2023_model') }}
+select 
+  current_date("Asia/Jakarta") as backup_date, 
+  * except (backup_date),
+  safe_cast(null as string) as store_status,
+  safe_cast(null as string) as sales_type
+from {{ ref('sales_backup_2023_model') }}
+
 union all
-select current_date("Asia/Jakarta") as backup_date, * except (backup_date) from {{ ref('sales_backup_2024_direct_model') }}
+
+select
+  current_date("Asia/Jakarta") as backup_date,
+  * except (backup_date),
+  safe_cast(null as string) as store_status,
+  safe_cast(null as string) as sales_type
+from {{ ref('sales_backup_2024_direct_model') }}
+
 union all
-select current_date("Asia/Jakarta") as backup_date, * except (backup_date) from {{ ref('sales_backup_2024_distributor_model') }}
+
+select 
+  current_date("Asia/Jakarta") as backup_date, 
+  * except (backup_date),
+  safe_cast(null as string) as store_status,
+  safe_cast(null as string) as sales_type
+from {{ ref('sales_backup_2024_distributor_model') }}
+
 union all
+
 select * from {{ ref('sales_backup_2025_onwards') }}
