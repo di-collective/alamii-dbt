@@ -2,7 +2,7 @@
   config(
     materialized = 'table',
     full_refresh = true,
-    tags = ['sales', 'backup']
+    tags = ['sales', 'backup', '2024', 'direct']
   )
 }}
 
@@ -46,5 +46,6 @@ select
   sub_area,
   store_status,
   sales_type
-from alamii.sales_production.raw_sales_v4
-where year_po >= 2025
+from alamii.sales_production.raw_sales_2025
+where po_date is not null
+and year_po = 2025
