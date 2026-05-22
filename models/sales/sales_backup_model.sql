@@ -45,7 +45,7 @@ select
   * except (backup_date),
   safe_cast(null as string) as store_status,
   safe_cast(null as string) as sales_type
-from {{ ref('sales_backup_2025') }}
+from {{ ref('sales_backup_2025_model') }}
 
 union all
 
