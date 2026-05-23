@@ -42,7 +42,7 @@ union all
 
 select 
   current_date("Asia/Jakarta") as backup_date, 
-  * except (backup_date),
+  * except (backup_date, store_status, sales_type),
   safe_cast(null as string) as store_status,
   safe_cast(null as string) as sales_type
 from {{ ref('sales_backup_2025_model') }}
